@@ -7,11 +7,14 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import Router from 'universal-router';
-import generateUrls from 'universal-router/generateUrls';
-import routes from './routes';
+@import '../../../components/variables.css';
+.root {
+    padding-left: 20px;
+    padding-right: 20px;
+}
 
-const router = new Router(routes);
-
-export default router;
-export const url = generateUrls(router);
+.container {
+    margin: 0 auto;
+    padding: 0 0 40px;
+    max-width: var(--max-content-width);
+}
