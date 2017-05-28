@@ -30,6 +30,7 @@ export default {
       },
     },
     require('./mnist').default,
+    require('./inception').default,
   ],
 
 };

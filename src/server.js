@@ -91,12 +91,12 @@ app.use('/graphql', expressGraphQL(req => ({
   graphiql: __DEV__,
   rootValue: { request: req },
   pretty: __DEV__,
-  formatError: __DEV__ ? undefined : error => ({
+  formatError: __DEV__ ? error => ({
     message: error.message,
     locations: error.locations,
     stack: error.stack,
     path: error.path,
-  }),
+  }) : undefined,
 })));
 
 //

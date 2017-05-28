@@ -50,7 +50,7 @@ class ModelGalary extends React.Component {
           <p>Anything in here will be replaced on browsers that support the canvas element</p>
           <ul>
             <li><a href={url('model/mnist')}>Mnist</a></li>
-            <li><a href={url('model/mnist')}>Mnist</a></li>
+            <li><a href={url('model/inception')}>Inception</a></li>
             <li><a href={url('model/mnist')}>Mnist</a></li>
             <li><a href={url('model/mnist')}>Mnist</a></li>
             <li><a href={url('model/mnist')}>Mnist</a></li>
