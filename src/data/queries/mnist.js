@@ -2,6 +2,7 @@ import {
   GraphQLString as StringType,
 } from 'graphql';
 import fetch from 'isomorphic-fetch';
+import { URLSearchParams } from 'url';
 import MnistRecognition from '../types/MnistType';
 
 const mnist = {
@@ -12,13 +13,16 @@ const mnist = {
     },
   },
   async resolve(_, { imageUrl }) {
-    console.info(`fetching start for image: ${imageUrl}`);
-    const imgResponse = await fetch(imageUrl);
-    const buffer = await imgResponse.buffer();
-    console.info(`fetching end for image: ${imageUrl}`);
+    console.info(`recognize start for image: ${imageUrl}`);
+    const tfServerUrl = 'http://localhost:8000/mnist/infer';
+    const searchParams = new URLSearchParams({ url: imageUrl }).toString();
+    const recognizeUrl = `${tfServerUrl}?${searchParams}`;
+    const imgResponse = await fetch(recognizeUrl);
+    const recognizeResult = await imgResponse.json();
+    console.info(`recognize end for image: ${imageUrl}`);
     return {
-      label: '1',
-      imageBase64: `data:image/png;base64,${buffer.toString('base64')}`,
+      label: recognizeResult.label,
+      imageBase64: recognizeResult.image_b64,
     };
   },
 };
