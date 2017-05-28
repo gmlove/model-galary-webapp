@@ -19,6 +19,20 @@ export default {
 
   name: 'model/mnist',
 
+  async action({ fetch }) {
+    const resp = await fetch('/graphql', {
+      body: JSON.stringify({
+        query: '{mnist{recognition,imageBase64}}',
+      }),
+    });
+    const { data } = await resp.json();
+    if (!data || !data.mnist) throw new Error('Failed to call mnist recognize.');
+    return {
+      title,
+      component: <Layout><Mnist title={title} /></Layout>,
+    };
+  },
+
   action() {
     return {
       title,

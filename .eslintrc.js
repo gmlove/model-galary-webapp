@@ -23,6 +23,8 @@ module.exports = {
 
     globals: {
       __DEV__: true,
+      TagCanvas: true,
+      console: true,
     },
 
     env: {

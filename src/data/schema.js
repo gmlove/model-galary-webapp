@@ -10,10 +10,12 @@
 import {
   GraphQLSchema as Schema,
   GraphQLObjectType as ObjectType,
+  GraphQLString as StringType,
 } from 'graphql';
 
 import me from './queries/me';
 import news from './queries/news';
+import mnist from './queries/mnist';
 
 const schema = new Schema({
   query: new ObjectType({
@@ -21,6 +23,7 @@ const schema = new Schema({
     fields: {
       me,
       news,
+      mnist,
     },
   }),
 });
