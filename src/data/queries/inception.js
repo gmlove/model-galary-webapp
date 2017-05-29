@@ -14,7 +14,7 @@ const inception = {
   },
   async resolve(_, { imageUrl }) {
     console.info(`recognize start for image: ${imageUrl}`);
-    const tfServerUrl = 'http://localhost:8000/inception/infer';
+    const tfServerUrl = `${process.env.SERVING_HTTP_URL || 'http://localhost:8000'}/inception/infer`;
     const searchParams = new URLSearchParams({ url: imageUrl }).toString();
     const recognizeUrl = `${tfServerUrl}?${searchParams}`;
     const imgResponse = await fetch(recognizeUrl);
