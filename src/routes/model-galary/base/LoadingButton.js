@@ -1,9 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { Component, PropTypes } from 'react';
 import { Button } from 'react-bootstrap';
 import cx from 'classnames';
 
-export default class LoadingButton extends React.Component {
+export default class LoadingButton extends Component {
 
   static propTypes = {
     inferring: PropTypes.bool.isRequired,
