@@ -2,7 +2,6 @@ import {
   GraphQLString as StringType,
 } from 'graphql';
 import fetch from 'isomorphic-fetch';
-import { URLSearchParams } from 'url';
 import InceptionRecognition from '../types/InceptionType';
 
 const inception = {
@@ -15,8 +14,7 @@ const inception = {
   async resolve(_, { imageUrl }) {
     console.info(`recognize start for image: ${imageUrl}`);
     const tfServerUrl = `${process.env.SERVING_HTTP_URL || 'http://localhost:8000'}/inception/infer`;
-    const searchParams = new URLSearchParams({ url: imageUrl }).toString();
-    const recognizeUrl = `${tfServerUrl}?${searchParams}`;
+    const recognizeUrl = `${tfServerUrl}?url=${encodeURIComponent(imageUrl)}`;
     const imgResponse = await fetch(recognizeUrl);
     const recognizeResult = await imgResponse.json();
     console.info(`recognize end for image: ${imageUrl}`);
