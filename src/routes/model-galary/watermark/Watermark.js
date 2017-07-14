@@ -2,21 +2,21 @@ import React from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
 import ImageModel from '../base/ImageModel';
-import s from './Inception.css';
+import s from './Watermark.css';
 
 const images = [
-  'airplane.jpg', 'cat.png', 'dog.jpg', 'girl.jpg', 'koala.jpg', 'sheep.png', 'swan.jpg', 'tiger.jpg', 'wolf.png',
-].map(name => `/assets/inception/${name}`);
+  'clean_0.jpg', 'logo_0.jpg', 'clean_1.jpg', 'text_0.jpg', 'clean_2.jpg', 'logo_1.jpg', 'logo_2.jpg', 'text_1.jpg', 'text_2.jpg',
+].map(name => `/assets/watermark/${name}`);
 
 function getRecognizeQuery(imageUrl) {
-  return `{inception(imageUrl:"${imageUrl}"){labels{name,probability},imageBase64}}`;
+  return `{watermark(imageUrl:"${imageUrl}"){labels{name,probability},imageBase64}}`;
 }
 
 function parseRecognizeData(data) {
-  if (!data || !data.inception) {
-    throw new Error('Failed to call inception recognize.');
+  if (!data || !data.watermark) {
+    throw new Error('Failed to call watermark recognize.');
   }
-  return data.inception;
+  return data.watermark;
 }
 
 function resultPanel(maybeNullRecognition) {
@@ -46,14 +46,14 @@ function getRecognizeImageBase64(maybeNullRecognition) {
   return recognition.imageBase64;
 }
 
-class Inception extends React.Component {
+class Watermark extends React.Component {
 
   render() {
     return (
       <ImageModel
-        name="inception"
-        title="Inception Model"
-        description="Google Inception neural network model to recognize imagenet images."
+        name="watermark"
+        title="Watermark Model"
+        description="Google Watermark neural network model to recognize imagenet images."
         images={images}
         getRecognizeQuery={getRecognizeQuery}
         parseRecognizeData={parseRecognizeData}
@@ -65,4 +65,4 @@ class Inception extends React.Component {
 
 }
 
-export default withStyles(s)(Inception);
+export default withStyles(s)(Watermark);
