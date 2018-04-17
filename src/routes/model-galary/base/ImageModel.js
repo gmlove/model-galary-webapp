@@ -30,6 +30,11 @@ class ImageModel extends React.Component {
     parseRecognizeData: PropTypes.func.isRequired,
     getRecognizeImageBase64: PropTypes.func.isRequired,
     getResultPanel: PropTypes.func.isRequired,
+    extendedStyles: PropTypes.object,
+  }
+
+  static defaultProps = {
+    extendedStyles: {},
   }
 
   constructor() {
@@ -47,6 +52,7 @@ class ImageModel extends React.Component {
       inputUrlValidationState: null,
       inputUrl: null,
       recognition: null,
+      extendedStyles: {},
     };
   }
 
@@ -99,7 +105,7 @@ class ImageModel extends React.Component {
       <Panel>
         <p>Recognition Result</p>
         <Image
-          className={s.recognizeImg}
+          className={this.getStyle('recognizeImg')}
           src={this.props.getRecognizeImageBase64(this.state.recognition)}
           thumbnail
         />
@@ -108,17 +114,21 @@ class ImageModel extends React.Component {
     );
   }
 
+  getStyle(name) {
+    return (this.props.extendedStyles && this.props.extendedStyles[name]) || s[name];
+  }
+
   render() {
     const imageOptions = this.props.images.map(image => ({
-      bsClass: cx('thumbnail', s.image),
-      bsSelClass: cx('thumbnail', s.image, s.imageSelected),
+      bsClass: cx('thumbnail', this.getStyle('image')),
+      bsSelClass: cx('thumbnail', this.getStyle('image'), this.getStyle('imageSelected')),
       img: image,
       value: image,
     }));
     const imagesSelect = (
       <FormGroup controlId="formSelectImage" validationState={this.state.imageSelectValidationState}>
-        <ControlLabel bsClass={cx('control-label', s.controlLabel)}>Select an image to test:</ControlLabel>
-        <div className={s.imageContainer}>
+        <ControlLabel bsClass={cx('control-label', this.getStyle('controlLabel'))}>Select an image to test:</ControlLabel>
+        <div className={this.getStyle('imageContainer')}>
           <RadioImg
             ref={this.state.selectedImage}
             options={imageOptions}
@@ -133,7 +143,7 @@ class ImageModel extends React.Component {
           inferring={this.state.inferring}
           text="Run Recognize"
           loadingText="Running..."
-          btnClass={s.blockBtn}
+          btnClass={this.getStyle('blockBtn')}
           onClick={this.runRecognizeFromSelection}
         />
         {this.state.imageSelectValidationState === null ? null
@@ -160,7 +170,7 @@ class ImageModel extends React.Component {
           inferring={this.state.inferring}
           text="Run Recognize"
           loadingText="Running..."
-          btnClass={s.blockBtn}
+          btnClass={this.getStyle('blockBtn')}
           onClick={this.runRecognizeFromInput}
         />
         {this.state.inputUrlValidationState === null ? null
@@ -174,8 +184,8 @@ class ImageModel extends React.Component {
       </form>
     );
     return (
-      <div className={s.root}>
-        <div className={s.container}>
+      <div className={this.getStyle('root')}>
+        <div className={this.getStyle('container')}>
           <Jumbotron>
             <h1>{this.props.title}</h1>
             <p>{this.props.description}</p>

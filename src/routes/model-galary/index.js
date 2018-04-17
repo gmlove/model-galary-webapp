@@ -32,6 +32,7 @@ export default {
     require('./mnist').default,
     require('./inception').default,
     require('./watermark').default,
+    require('./ocr').default,
   ],
 
 };

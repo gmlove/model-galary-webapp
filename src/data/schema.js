@@ -17,6 +17,7 @@ import news from './queries/news';
 import mnist from './queries/mnist';
 import inception from './queries/inception';
 import watermark from './queries/watermark';
+import ocr from './queries/ocr';
 
 const schema = new Schema({
   query: new ObjectType({
@@ -27,6 +28,7 @@ const schema = new Schema({
       mnist,
       inception,
       watermark,
+      ocr,
     },
   }),
 });

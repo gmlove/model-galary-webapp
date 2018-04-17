@@ -54,13 +54,16 @@ class ModelGalary extends React.Component {
             <li><a href={url('model/inception')}>Inception</a></li>
             <li><a href={url('model/inception')}>Inception</a></li>
             <li><a href={url('model/inception')}>Inception</a></li>
+            <li><a href={url('model/ocr')}>OCR</a></li>
             <li><a href={url('model/mnist')}>Mnist</a></li>
             <li><a href={url('model/mnist')}>Mnist</a></li>
             <li><a href={url('model/mnist')}>Mnist</a></li>
+            <li><a href={url('model/ocr')}>OCR</a></li>
             <li><a href={url('model/watermark')}>Watermark</a></li>
             <li><a href={url('model/watermark')}>Watermark</a></li>
             <li><a href={url('model/watermark')}>Watermark</a></li>
             <li><a href={url('model/watermark')}>Watermark</a></li>
+            <li><a href={url('model/ocr')}>OCR</a></li>
           </ul>
         </canvas>
       </div>
