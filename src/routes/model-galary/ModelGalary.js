@@ -64,6 +64,10 @@ class ModelGalary extends React.Component {
             <li><a href={url('model/watermark')}>Watermark</a></li>
             <li><a href={url('model/watermark')}>Watermark</a></li>
             <li><a href={url('model/ocr')}>OCR</a></li>
+            <li><a href={url('model/wdn')}>Wide & Deep</a></li>
+            <li><a href={url('model/wdn')}>Wide & Deep</a></li>
+            <li><a href={url('model/wdn')}>Wide & Deep</a></li>
+            <li><a href={url('model/wdn')}>Wide & Deep</a></li>
           </ul>
         </canvas>
       </div>
