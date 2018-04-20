@@ -27,7 +27,8 @@ class WideDeep extends React.Component {
   }
 
   handleAgeChange(e) {
-    e.preventDefault()
+    e.preventDefault();
+    console.log(e.target.name);
     this.setState({ age: e.target.value })
   }
 

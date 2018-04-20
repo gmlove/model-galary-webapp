@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '../../../components/Layout';
-import WideDeep from './WideDeep'
+import WideDeep from './WideDeepMovielens'
 
 const title = 'Wide & Deep';
 
