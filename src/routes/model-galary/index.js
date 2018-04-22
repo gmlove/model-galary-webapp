@@ -33,6 +33,7 @@ export default {
     require('./inception').default,
     require('./watermark').default,
     require('./ocr').default,
+    require('./wide_deep').default,
   ],
 
 };
